@@ -1,0 +1,9 @@
+{
+  "short_name": "narokjang_frontend",
+  "name": "narokjang_frontend",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

@@ -1,4 +1,8 @@
 const color = {
+    'base': {
+      'white': '#ffffff',
+      'black': '#000000'
+    },
     'gray': { 
       50: '#fcfcfd', 
       100: '#f1f3f6', 

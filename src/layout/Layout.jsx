@@ -51,8 +51,8 @@ const Mockup = styled.img`
 
 const Screen = styled.div`
 	width: 393px;
-	height: 777px;
+	height: 830px;
 	position: absolute;
 	z-index: 2;
-	bottom: 36px;
+	top: 70px;
 `;

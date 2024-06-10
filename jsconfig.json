@@ -1,6 +1,14 @@
 {
-    "compilerOptions": {
-      "jsx": "react",
-      "baseUrl": "src"
+  "compilerOptions": {
+    "jsx": "react",
+    "baseUrl": "src",
+    "paths": {
+      "styles/*": ["styles/*"],
+      "pages/*": ["pages/*"],
+      "layout/*": ["layout/*"],
+      "constants/*": ["constants/*"],
+      "assets/*": ["assets/*"],
+      "api/*": ["api/*"]
     }
   }
+}

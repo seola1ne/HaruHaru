@@ -26,7 +26,7 @@ const font = {
     p2_bold: fontGenerator(600, 0.875, "#000000"),
     p3_bold: fontGenerator(600, 0.75, "#000000"),
     
-    button: fontGenerator(400, 0.875, "#FFFFFF"),
+    button: fontGenerator(400, 1, "#FFFFFF"),
     caption: fontGenerator(400, 0.813, "#000000"),
     placeholder: fontGenerator(300, 0.75, "#A8B3C4"),
     navigator: fontGenerator(600, 0.75, "#A8B3C4"),

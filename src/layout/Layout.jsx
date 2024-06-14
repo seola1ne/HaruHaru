@@ -32,15 +32,15 @@ const Main = styled.main`
 	margin: 0;
 	padding: 0;
 	position: relative;
-	height: 883px;
-	width: 437px;
+	width: 100%;
+	height: 100%;
 	display: flex;
 	justify-content: center;
 `;
 
 const Mockup = styled.img`
-	height: 932px;
-	width: 473px;
+	height: 885px;
+	width: 432px;
 	position: absolute;
 	z-index: 1;
 	-webkit-user-select: none;
@@ -51,7 +51,7 @@ const Mockup = styled.img`
 
 const Screen = styled.div`
 	width: 393px;
-	height: 830px;
+	height: 852px;
 	position: absolute;
 	z-index: 2;
 	top: 70px;

@@ -45,6 +45,7 @@ const SplashPageBox = styled.div`
   align-items: center;
 
   background-image: url(${Background});
+  border-radius: 60px;
 `;
 
 const SplashSrcBox = styled.div`

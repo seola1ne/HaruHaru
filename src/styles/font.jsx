@@ -13,8 +13,8 @@ const fontGenerator = (
 `;
 
 const font = {
-	H1: fontGenerator(600, 1.125, "#000000"),
-	H2: fontGenerator(600, 1, "#000000"),
+	H1: fontGenerator(600, 1.5, "#000000"),
+	H2: fontGenerator(600, 1.25, "#000000"),
 
     SubTitle: fontGenerator(400, 1, "#8292AA"),
 
@@ -27,7 +27,7 @@ const font = {
     p3_bold: fontGenerator(600, 0.75, "#000000"),
     
     button: fontGenerator(400, 1, "#FFFFFF"),
-    caption: fontGenerator(400, 0.813, "#000000"),
+    caption: fontGenerator(500, 0.9, "#000000"),
     placeholder: fontGenerator(300, 0.75, "#A8B3C4"),
     navigator: fontGenerator(600, 0.75, "#A8B3C4"),
 };

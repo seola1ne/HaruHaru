@@ -23,7 +23,7 @@ export default QuestionItem;
 
 const ItemBox = styled.div`
     border-radius: 0.625rem;
-    width: 18rem;
+    width: 17rem;
     height: 7rem;
     border: 2px solid ${color.gray[100]};
     background-color: ${color.base['white']};

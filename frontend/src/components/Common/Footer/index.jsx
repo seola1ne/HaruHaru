@@ -88,11 +88,11 @@ const Container = styled.div`
   border-radius: 0 0 49px 49px;
   width: 98%;
   border-top: 1px solid ${color.gray[100]};
+  background-color: ${color.base['white']};
 `;
 
 const NavWrapper = styled.div`
   margin-top: 0.8rem;
-  background-color: ${color.base['white']};
   display: flex;
   justify-content: space-around;
   width: 99%;

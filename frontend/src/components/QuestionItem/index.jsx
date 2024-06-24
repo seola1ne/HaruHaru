@@ -24,7 +24,7 @@ export default QuestionItem;
 const ItemBox = styled.div`
     border-radius: 0.625rem;
     width: 17rem;
-    height: 7rem;
+    height: 6.6rem;
     border: 2px solid ${color.gray[100]};
     background-color: ${color.base['white']};
     display: flex;
@@ -42,8 +42,8 @@ const ItemBox = styled.div`
 `;
 
 const EmojiBox = styled.div`
-    width: 9rem;
-    height: 9rem;
+    width: 8rem;
+    height: 8rem;
     border-radius: 50%;
     background-color: ${props => props.color};
     position: absolute;
@@ -55,7 +55,7 @@ const EmojiBox = styled.div`
 
 const EmojiIcon = styled.p`
     font-size: 2.4rem;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
 `;
 
 const Title = styled.p`

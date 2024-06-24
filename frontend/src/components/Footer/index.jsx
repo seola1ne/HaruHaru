@@ -86,16 +86,15 @@ const Container = styled.div`
   z-index: 3;
   border-radius: 0 0 49px 49px;
   width: 100%;
+  background-color: ${color.base['white']};
   border-top: 1px solid ${color.gray[100]};
 `;
 
 const NavWrapper = styled.div`
   margin-top: 0.8rem;
-  background-color: ${color.base['white']};
   display: flex;
   justify-content: space-around;
   width: 99%;
-  border-radius: 20px;
   margin-bottom: 1rem;
 `;
 

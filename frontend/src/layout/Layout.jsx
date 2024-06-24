@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import iPhoneMockup from 'assets/global/iPhone15_Pro.png';
+import color from "styles/color";
 
 
 function Layout({ children, bgcolor }) {
 	return (
-	  <Container bgcolor={bgcolor}>
+	  <Container>
 		<Main>
 		  <Mockup src={iPhoneMockup} />
-		  <Screen>{children}</Screen>
+		  <Screen bgcolor={bgcolor}>{children}</Screen>
 		</Main>
 	  </Container>
 	);
@@ -23,7 +24,7 @@ const Container = styled.div`
 	align-items: center;
 	gap: 120px;
 
-	background-color: ${(props) => props.bgcolor};
+	background-color: ${color.base['white']};
 `;
 
 const Main = styled.main`
@@ -49,8 +50,10 @@ const Mockup = styled.img`
 
 const Screen = styled.div`
 	width: 393px;
-	height: 852px;
+	height: 49.88rem;
 	position: absolute;
 	z-index: 2;
 	top: 70px;
+	background-color: ${props => `${props.bgcolor}`};
+	border-radius: 0 0 56px 56px;
 `;

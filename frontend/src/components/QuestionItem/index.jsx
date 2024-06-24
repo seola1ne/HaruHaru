@@ -2,9 +2,13 @@ import { styled } from "styled-components";
 import color from "styles/color";
 import font from "styles/font";
 
-function QuestionItem({contents, createDate, answerDate, emoji, color}) {
+function QuestionItem({id, contents, createDate, answerDate, emoji, color, onClick}) {
+    const handleClick = () => {
+        onClick(id);
+    };
+
     return (
-        <ItemBox>
+        <ItemBox color={color} onClick={handleClick}>
             <Title>
                 Q. {contents}
             </Title>
@@ -18,28 +22,43 @@ function QuestionItem({contents, createDate, answerDate, emoji, color}) {
 export default QuestionItem;
 
 const ItemBox = styled.div`
-    width: 20rem;
-    height: 7.3125rem;
     border-radius: 0.625rem;
-    border: 1px solid ${color.gray[100]};
+    width: 18rem;
+    height: 7rem;
+    border: 2px solid ${color.gray[100]};
     background-color: ${color.base['white']};
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 0 1.25rem;
+    padding: 0.5rem 1.5rem;
+    overflow: hidden;
+    position: relative;
+
+    &:hover {
+        cursor: pointer;
+        background-color: ${props => `${props.color}30`};
+        border-color: ${props => `${props.color}`};
+        transition: 0.2s ease;
+    }
+`;
+
+const EmojiBox = styled.div`
+    width: 9rem;
+    height: 9rem;
+    border-radius: 50%;
+    background-color: ${props => props.color};
+    position: absolute;
+    bottom: -2.5rem;
+    right: -1rem;
+    text-align: center;
+    z-index: 1;
+`;
+
+const EmojiIcon = styled.p`
+    font-size: 2.4rem;
+    margin-top: 2rem;
 `;
 
 const Title = styled.p`
     ${font.H2};
-`;
-
-const EmojiBox = styled.div`
-    width: 10.125rem;
-    height: 10.125rem;
-    border-radius: 50%;
-    background-color: ${props => props.color};
-`;
-
-const EmojiIcon = styled.p`
-    font-size: 1.5rem;
+    z-index: 2;
 `;

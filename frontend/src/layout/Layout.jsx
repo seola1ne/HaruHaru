@@ -1,12 +1,10 @@
 import styled from "styled-components";
-import font from "styles/font";
-import color from "styles/color";
 import iPhoneMockup from 'assets/global/iPhone15_Pro.png';
 
 
-function Layout({ children }) {
+function Layout({ children, bgcolor }) {
 	return (
-	  <Container>
+	  <Container bgcolor={bgcolor}>
 		<Main>
 		  <Mockup src={iPhoneMockup} />
 		  <Screen>{children}</Screen>
@@ -25,7 +23,7 @@ const Container = styled.div`
 	align-items: center;
 	gap: 120px;
 
-	background-color: ${color.white};
+	background-color: ${(props) => props.bgcolor};
 `;
 
 const Main = styled.main`

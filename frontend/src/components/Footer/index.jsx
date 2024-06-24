@@ -12,7 +12,6 @@ import StorageFill from "assets/footer/storage-fill.png";
 import StorageDefault from "assets/footer/storage-default.png";
 import ProfileFill from "assets/footer/profile-fill.png";
 import ProfileDefault from "assets/footer/profile-default.png"
-import font from "styles/font";
 
 function Footer() {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -86,7 +85,7 @@ const Container = styled.div`
   bottom: 0;
   z-index: 3;
   border-radius: 0 0 49px 49px;
-  width: 98%;
+  width: 100%;
   border-top: 1px solid ${color.gray[100]};
 `;
 
@@ -97,6 +96,7 @@ const NavWrapper = styled.div`
   justify-content: space-around;
   width: 99%;
   border-radius: 20px;
+  margin-bottom: 1rem;
 `;
 
 const NavItem = styled.div`
@@ -115,24 +115,15 @@ const StyledLink = styled(Link)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  width: 70px;
-  height: 70px;
-  border-radius: 30%;
-
-  &:hover {
-    background-color: ${color.gray[100]};
-    transition: 0.15s ease;
-  }
 `;
 
 const Icon = styled.img`
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
 `;
 
 const Label = styled.span`
-  ${font.icon};
+  font-size: 0.875rem;
   color: ${({ selected }) => selected ? color.gray[800] : color.gray[400]};
   margin-top: 8px;
 `;

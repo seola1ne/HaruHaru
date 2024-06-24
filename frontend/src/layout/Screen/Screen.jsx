@@ -13,4 +13,6 @@ const Container = styled.div`
 	background-color: ${(props) => props.bgcolor};
 	position: relative;
 	border-radius: 49px;
+	display: flex;
+	justify-content: center;
 `;

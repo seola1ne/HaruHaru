@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import color from "../../styles/color";
+import color from "styles/color";
 import { Link } from "react-router-dom";
 import HomeIndicatorImg from "assets/global/Home_Indicator.png";
 
@@ -82,19 +82,21 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   position: absolute;
+  margin: 0 auto;
   bottom: 0;
   z-index: 3;
   border-radius: 0 0 49px 49px;
-  width: 100%;
-  background-color: ${color.white};
-  padding: 16px 0;
+  width: 98%;
+  border-top: 1px solid ${color.gray[100]};
 `;
 
 const NavWrapper = styled.div`
+  margin-top: 0.8rem;
   background-color: ${color.base['white']};
   display: flex;
   justify-content: space-around;
-  width: 100%;
+  width: 99%;
+  border-radius: 20px;
 `;
 
 const NavItem = styled.div`
@@ -114,8 +116,8 @@ const StyledLink = styled(Link)`
   justify-content: center;
   align-items: center;
 
-  width: 80px;
-  height: 76px;
+  width: 70px;
+  height: 70px;
   border-radius: 30%;
 
   &:hover {
@@ -125,8 +127,8 @@ const StyledLink = styled(Link)`
 `;
 
 const Icon = styled.img`
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
 `;
 
 const Label = styled.span`

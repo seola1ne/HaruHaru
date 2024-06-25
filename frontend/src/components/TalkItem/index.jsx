@@ -2,20 +2,20 @@ import { styled } from "styled-components";
 import color from "styles/color";
 import font from "styles/font";
 
-function TalkItem({ id, writer, contents, createDate, answerDate, color, onClick }) {
+function TalkItem({ id, writer, contents, createDate, answerDate, onClick }) {
   const handleClick = () => {
     onClick(id);
   };
 
   return (
-    <ItemBox color={color} onClick={handleClick}>
+    <ItemBox onClick={handleClick}>
       <ItemContents>
         <p className="title">{writer} 님</p>
         <p className="contents">{contents}</p>
       </ItemContents>
       <CircleBoxWrapper>
-        <CircleBox color={color} />
-        <CircleBox color={color} />
+        <CircleBox />
+        <CircleBox />
       </CircleBoxWrapper>
     </ItemBox>
   );
@@ -37,27 +37,27 @@ const ItemBox = styled.div`
 
   &:hover {
     cursor: pointer;
-    background-color: ${(props) => `${props.color}30`};
-    border-color: ${(props) => `${props.color}`};
+    background-color: rgba(241, 243, 246, 0.3);
+    border-color: ${color.gray[200]};
     transition: 0.2s ease;
   }
 `;
 
 const CircleBoxWrapper = styled.div`
   position: absolute;
-  bottom: -5rem;
-  right: -1rem;
+  bottom: -7rem;
+  right: -2rem;
   display: flex;
   z-index: 2;
 `;
 
 const CircleBox = styled.div`
-  width: 8rem;
-  height: 8rem;
+  width: 10rem;
+  height: 10rem;
   border-radius: 50%;
-  background-color: ${(props) => props.color};
+  background-color: ${color.gray[100]};
   text-align: center;
-  margin-left: -2rem;
+  margin-left: -4.4rem;
 `;
 
 const ItemContents = styled.div`
@@ -78,6 +78,6 @@ const ItemContents = styled.div`
 
   .contents {
     ${font.p2};
-    line-height: 140%;
+    line-height: 110%;
   }
 `;

@@ -1,6 +1,7 @@
 import Question from "pages/question";
 import SignUp from "pages/signup";
 import Splash from "pages/splash";
+import Storage from "pages/storage";
 import Talk from "pages/talk";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -12,6 +13,7 @@ function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/question" element={<Question />} />
           <Route path="/talk" element={<Talk />} />
+          <Route path="/storage" element={<Storage />} />
         </Routes>
       </BrowserRouter>
   );

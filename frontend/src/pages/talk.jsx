@@ -20,7 +20,7 @@ function Talk() {
         <Layout bgcolor={color.gray[50]}>
             <Screen>
                 <TalkPageBox>
-                {/* <TitleBox>
+                <TitleBox>
                     <img className="logo" src={Logo} alt="하루하루" />
                     <PageTitle title="오늘의 이야깃거리예요!" subTitle="원설아 님의 의견을 들려주세요." />
                 </TitleBox>
@@ -29,12 +29,13 @@ function Talk() {
                         <TalkItem
                             key={talk.id}
                             id={talk.id}
+                            writer={talk.writer}
                             contents={talk.content}
                             color={talk.color}
                             onClick={() => handleTalkItemClick(talk.id)}
                         />
                     ))}
-                </ItemsBox> */}
+                </ItemsBox>
                 </TalkPageBox>
                 <Footer />
             </Screen>

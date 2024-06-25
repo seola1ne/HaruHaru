@@ -18,13 +18,13 @@ const font = {
 
     SubTitle: fontGenerator(400, 1, "#8292AA"),
 
-	p1: fontGenerator(400, 1.125, "#000000"),
-	p2: fontGenerator(400, 1, "#000000"),
-	p3: fontGenerator(400, 0.75, "#000000"),
+	p1: fontGenerator(400, 1.25, "#000000"),
+	p2: fontGenerator(400, 1.125, "#000000"),
+	p3: fontGenerator(400, 1, "#000000"),
 
-    p1_bold: fontGenerator(600, 1, "#000000"),
-    p2_bold: fontGenerator(600, 0.875, "#000000"),
-    p3_bold: fontGenerator(600, 0.75, "#000000"),
+    p1_bold: fontGenerator(600, 1.25, "#000000"),
+    p2_bold: fontGenerator(600, 1.125, "#000000"),
+    p3_bold: fontGenerator(600, 1, "#000000"),
     
     button: fontGenerator(400, 1, "#FFFFFF"),
     caption: fontGenerator(500, 0.9, "#000000"),

@@ -1,3 +1,4 @@
+import Profile from "pages/profile";
 import Question from "pages/question";
 import SignUp from "pages/signup";
 import Splash from "pages/splash";
@@ -14,6 +15,7 @@ function App() {
           <Route path="/question" element={<Question />} />
           <Route path="/talk" element={<Talk />} />
           <Route path="/storage" element={<Storage />} />
+          <Route path="profile" element={<Profile />} />
         </Routes>
       </BrowserRouter>
   );

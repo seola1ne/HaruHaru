@@ -78,5 +78,6 @@ const ItemContents = styled.div`
 
   .contents {
     ${font.p2};
+    line-height: 140%;
   }
 `;

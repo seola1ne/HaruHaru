@@ -4,7 +4,8 @@ import QuestionWrite from "pages/question/[id]/write";
 import SignUp from "pages/signup";
 import Splash from "pages/splash";
 import Storage from "pages/storage";
-import Talk from "pages/talk";
+import Talk from "pages/talk/talk";
+import TalkWrite from "pages/talk/[id]/write";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/question" element={<Question />} />
         <Route path="/question/:id/write" element={<QuestionWrite />} />
+        <Route path="/talk/:id/write" element={<TalkWrite />} />
         <Route path="/talk" element={<Talk />} />
         <Route path="/storage" element={<Storage />} />
         <Route path="/profile" element={<Profile />} />

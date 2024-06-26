@@ -23,7 +23,7 @@ function Splash() {
           </SplashSrcBox>
 
           <Link to="sign-up">
-            <Button variant={"primary"}>시작하기</Button>
+            <Button variant={"primary"} width="19.625rem">시작하기</Button>
           </Link>
           
           <HomeIndicator src={HomeIndicatorImg} />

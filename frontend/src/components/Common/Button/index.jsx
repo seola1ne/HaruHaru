@@ -20,7 +20,7 @@ const Button = ({ variant, width, ...props }) => {
 export default Button;
 
 const ButtonBase = styled.button`
-    width: ${props => props.width ? props.width : "19.625rem"};
+    width: ${props => props.width ? props.width : "100%"};
     border-radius: 0.5rem;
     padding: 0.75rem 1rem;
     ${font.button}

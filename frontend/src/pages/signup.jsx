@@ -22,10 +22,10 @@ function SignUp() {
                         </TitleBox>
 
                         <InputList>
-                            <Input id="user-name" label="이름" placeholder="이름을 입력해 주세요." />
-                            <Input id="user-id" label="아이디" placeholder="아이디를 입력해 주세요." />
-                            <Input id="user-password" label="비밀번호" placeholder="비밀번호를 입력해 주세요." type="password" />
-                            <Input id="user-birthday" label="생년월일" placeholder="생년월일을 입력해 주세요. (Ex. 20000101)" />
+                            <Input id="user-name" label="이름" placeholder="이름을 입력해 주세요." required />
+                            <Input id="user-id" label="아이디" placeholder="아이디를 입력해 주세요." required />
+                            <Input id="user-password" label="비밀번호" placeholder="비밀번호를 입력해 주세요." type="password" required />
+                            <Input id="user-birthday" label="생년월일" placeholder="생년월일을 입력해 주세요. (Ex. 20000101)" required />
                         </InputList>
 
 

@@ -14,7 +14,7 @@ import Button from 'components/Common/Button';
 import Row from 'components/Common/Flex/Row';
 
 function Profile() {
-    const userId = "seola1ne";
+    const userId = "a123";
     const user = userData.find(u => u.id === userId);
     const keywordInfo = keywordData.find(data => data.userId === user.id);
 

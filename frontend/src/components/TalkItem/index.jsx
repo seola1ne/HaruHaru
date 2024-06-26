@@ -77,7 +77,7 @@ const ItemContents = styled.div`
   }
 
   .contents {
-    ${font.p2};
+    ${font.p3};
     line-height: 110%;
   }
 `;

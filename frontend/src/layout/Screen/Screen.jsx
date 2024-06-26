@@ -9,7 +9,7 @@ export default Screen;
 
 const Container = styled.div`
 	width: 24.5625rem;
-	height: 49.875rem;
+	min-height: 49.875rem;
 	background-color: ${(props) => props.bgcolor};
 	position: relative;
 	border-radius: 49px;

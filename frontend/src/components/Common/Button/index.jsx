@@ -52,8 +52,9 @@ const SecondaryButton = styled(ButtonBase)`
 `;
 
 const TertiaryButton = styled(ButtonBase)`
-    border: 1px solid ${color.gray[400]};
-    color: ${color.gray[900]};
+  background-color: ${color.base['white']};
+  border: 1px solid ${color.gray[400]};
+  color: ${color.gray[900]};
 
   &:hover {
     border-color: ${color.gray[900]};

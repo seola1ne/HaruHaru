@@ -83,7 +83,7 @@ const StorageItem = styled.div`
     }
 
     .item-subtitle {
-        ${font.p2};
+        ${font.p3};
         color: ${color.gray[500]};
         line-height: 140%;
     }

@@ -3,7 +3,7 @@ import Question from "pages/question/question";
 import QuestionWrite from "pages/question/[id]/write";
 import SignUp from "pages/signup";
 import Splash from "pages/splash";
-import Storage from "pages/storage";
+import Storage from "pages/storage/storage";
 import Talk from "pages/talk/talk";
 import TalkWrite from "pages/talk/[id]/write";
 import { BrowserRouter, Route, Routes } from "react-router-dom";

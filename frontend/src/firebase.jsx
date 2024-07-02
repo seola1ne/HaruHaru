@@ -1,25 +1,26 @@
-// Import the functions you need from the SDKs you need
+import firebase from "firebase/compat/app";
+
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getFirestore } from "firebase/firestore"
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_apiKey,
-  authDomain: process.env.REACT_APP_authDomain,
-  projectId: process.env.REACT_APP_projectId,
-  storageBucket: process.env.REACT_APP_storageBucket,
-  messagingSenderId: process.env.REACT_APP_messagingSenderId,
-  appId: process.env.REACT_APP_appId,
-  measurementId: process.env.REACT_APP_measurementId
+  apiKey: "AIzaSyCp_WZhM3ZvwVLZtw_VSGD82rTjtPc803g",
+  authDomain: "haruharu-bssm.firebaseapp.com",
+  projectId: "haruharu-bssm",
+  storageBucket: "haruharu-bssm.appspot.com",
+  messagingSenderId: "592527361214",
+  appId: "1:592527361214:web:7a9e2f5e186b3e2759caef",
+  measurementId: "G-YBJ0DMMB04"
 };
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
-// firestore 객체 생성
+const fireStore = getAnalytics(app);
+const authService = getAuth(app);
 const db = getFirestore(app);
-// firestore export
-export {db}
+const storage = getStorage(app);
+
+export { fireStore, authService, db, app, storage };

@@ -19,7 +19,7 @@ function AnswerItem({id, title, answer, date, isActive, onClick}){
     <AnswerItemBox onClick={onClick}>
       <Row gap={0.88}>
         <p className="title">{id}</p>
-        <Column>
+        <Column gap={0.6}>
           <Column gap={0.4}>
             <p className="title">{title}</p>
             <p className="date">{formattedDate}</p>
@@ -44,7 +44,7 @@ const AnswerItemBox = styled.div`
   .title {
     ${font.H2};
     font-weight: bold;
-    word-break: keep-all;
+    max-width: 17rem;
   }
 
   .date {

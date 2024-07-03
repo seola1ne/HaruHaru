@@ -20,20 +20,20 @@ function QuestionAnswer() {
     const answers = [
         {
             id: 1,
-            question: "첫 번째 질문",
-            answer: "첫 번째 질문의 답변입니다.",
+            question: "생일 선물로 받고 싶은 것은?",
+            answer: "답변 부분",
             date: "20240515"
         },
         {
             id: 2,
-            question: "두 번째 질문",
-            answer: "두 번째 질문의 답변입니다.",
+            question: "간직하고 싶은 순간이 있다면?",
+            answer: "답변 부분",
             date: "20240515"
         },
         {
             id: 3,
-            question: "세 번째 질문",
-            answer: "세 번째 질문의 답변입니다.",
+            question: "오늘 일기에 쓰고 싶은 일은?",
+            answer: "답변 부분",
             date: "20240515"
         }
     ];
@@ -44,7 +44,7 @@ function QuestionAnswer() {
                 <AnswerPageBox>
                     <TitleBox>
                         <img className="logo" src={Logo} alt="하루하루" />
-                        <StyledLink to="/question">
+                        <StyledLink to="/storage">
                         <img className="arrow" src={ArrowLeft} alt="돌아가기"/>
                         1문 1답
                         </StyledLink>

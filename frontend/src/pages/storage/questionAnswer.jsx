@@ -21,18 +21,21 @@ function QuestionAnswer() {
         {
             id: 1,
             question: "생일 선물로 받고 싶은 것은?",
+            emoji: "🎁",
             answer: "답변 부분",
             date: "20240515"
         },
         {
             id: 2,
-            question: "간직하고 싶은 순간이 있다면?",
+            question: "해 보고 싶은 여행은?",
+            emoji: "✈️",
             answer: "답변 부분",
             date: "20240515"
         },
         {
             id: 3,
-            question: "오늘 일기에 쓰고 싶은 일은?",
+            question: "가장 듣고 싶은 말은?",
+            emoji: "💬",
             answer: "답변 부분",
             date: "20240515"
         }
@@ -55,6 +58,7 @@ function QuestionAnswer() {
                                 key={question.id}
                                 id={question.id}
                                 title={question.question}
+                                emoji={question.emoji}
                                 answer={question.answer}
                                 date={question.date}
                                 isActive={activeIndex === index}

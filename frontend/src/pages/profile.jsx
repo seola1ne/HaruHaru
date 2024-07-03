@@ -14,7 +14,7 @@ import Button from 'components/Common/Button';
 import Row from 'components/Common/Flex/Row';
 
 function Profile() {
-    const userId = "a123";
+    const userId = "seola1ne";
     const user = userData.find(u => u.id === userId);
     const keywordInfo = keywordData.find(data => data.userId === user.id);
 
@@ -79,7 +79,6 @@ const TitleBox = styled.div`
     gap: 1.87rem;
 
     margin-bottom: 1.88rem;
-    margin-left: 1rem;
 
     .logo {
         width: 6.75rem;

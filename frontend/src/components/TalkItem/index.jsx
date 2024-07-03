@@ -10,8 +10,8 @@ function TalkItem({ id, writer, contents, createDate, answerDate, onClick }) {
   return (
     <ItemBox onClick={handleClick}>
       <ItemContents>
-        <p className="title">{writer} 님</p>
-        <p className="contents">{contents}</p>
+        <p className="title">{contents}</p>
+        <p className="contents">{writer} 님</p>
       </ItemContents>
       <CircleBoxWrapper>
         <CircleBox />

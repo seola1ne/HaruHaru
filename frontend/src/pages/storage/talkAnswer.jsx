@@ -21,6 +21,7 @@ function TalkAnswer() {
         {
             id: 1,
             talk: "나와는 의견이 너무 다른 동료와 의견 충돌이 난 상황, 어떻게 해결할까?",
+            emoji: "😮",
             answer: "내 의견이 중요한 만큼 상대 의견도 중요하겠지... 상대 의견도 들어보고, 내 의견과 비교해서 장점과 단점은 무엇인지 생각해 볼 것 같다. 수용할 수 있는 의견이라면 수용하고, 아니라면 내 의견을 논리정연하게 정리해서 설득해야 할 듯",
             date: "20240515"
         },
@@ -42,6 +43,7 @@ function TalkAnswer() {
                             <AnswerItem
                                 key={talk.id}
                                 id={talk.id}
+                                emoji={talk.emoji}
                                 title={talk.talk}
                                 answer={talk.answer}
                                 date={talk.date}

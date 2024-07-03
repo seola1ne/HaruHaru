@@ -20,8 +20,10 @@ function AnswerItem({id, title, answer, date, isActive, onClick}){
       <Row gap={0.88}>
         <p className="title">{id}</p>
         <Column>
-          <p className="title">{title}</p>
-          <p className="date">{formattedDate}</p>
+          <Column gap={0.4}>
+            <p className="title">{title}</p>
+            <p className="date">{formattedDate}</p>
+          </Column>
           <p className="answer" style={{ display: isActive ? 'block' : 'none' }}>
             {answer}
           </p>
@@ -42,6 +44,7 @@ const AnswerItemBox = styled.div`
   .title {
     ${font.H2};
     font-weight: bold;
+    word-break: keep-all;
   }
 
   .date {

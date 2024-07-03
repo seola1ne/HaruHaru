@@ -6,6 +6,7 @@ import PageTitle from 'components/Common/PageTitle';
 import Footer from 'components/Common/Footer';
 import color from 'styles/color';
 import font from 'styles/font';
+import { Link } from 'react-router-dom';
 
 function Storage() {
     return (
@@ -17,20 +18,24 @@ function Storage() {
                     <PageTitle title="원설아 님의 기록장이에요!" subTitle="원설아 님만의 기록들을 확인해 봐요." />
                 </TitleBox>
                 <ItemsBox>
-                    <StorageItem>
-                        <Col>
-                            <p className="item-title">1문 1답</p>
-                            <p className="item-subtitle">하루에 하나씩 주어지는 질문에<br />답변한 기록들이에요.</p>
-                        </Col>
-                        <p className="item-icon">📃</p>
-                    </StorageItem>
-                    <StorageItem>
-                        <Col>
-                            <p className="item-title">이야기</p>
-                            <p className="item-subtitle">다양한 이야기를 읽고 남긴<br/>원설아 님만의 생각이에요.</p>
-                        </Col>
-                        <p className="item-icon">🤔</p>
-                    </StorageItem>
+                    <StyledLink to="/storage/question">
+                        <StorageItem>
+                                <Col>
+                                    <p className="item-title">1문 1답</p>
+                                    <p className="item-subtitle">하루에 하나씩 주어지는 <br />질문에 답변한 기록들이에요.</p>
+                                </Col>
+                                <p className="item-icon">📃</p>
+                        </StorageItem>
+                    </StyledLink>
+                    <StyledLink to="/storage/talk">
+                        <StorageItem>
+                            <Col>
+                                <p className="item-title">이야기</p>
+                                <p className="item-subtitle">다양한 이야기를 읽고 남긴<br/>원설아 님만의 생각이에요.</p>
+                            </Col>
+                            <p className="item-icon">🤔</p>
+                        </StorageItem>
+                    </StyledLink>
                 </ItemsBox>
                 </StoragePageBox>
                 <Footer />
@@ -105,3 +110,8 @@ const Col = styled.div`
     flex-direction: column;
     gap: 0.4rem;
 `;
+
+const StyledLink = styled(Link)`
+    text-decoration: none;
+    
+`

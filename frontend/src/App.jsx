@@ -3,6 +3,7 @@ import Question from "pages/question/question";
 import QuestionWrite from "pages/question/[id]/write";
 import SignUp from "pages/signup";
 import Splash from "pages/splash";
+import QuestionAnswer from "pages/storage/questionAnswer";
 import Storage from "pages/storage/storage";
 import Talk from "pages/talk/talk";
 import TalkWrite from "pages/talk/[id]/write";
@@ -19,6 +20,7 @@ function App() {
         <Route path="/talk/:id/write" element={<TalkWrite />} />
         <Route path="/talk" element={<Talk />} />
         <Route path="/storage" element={<Storage />} />
+        <Route path="/storage/question" element={<QuestionAnswer />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>

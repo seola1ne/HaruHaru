@@ -15,8 +15,12 @@ import TextArea from 'components/Common/TextArea';
 import ContentItem from 'components/ContentItem';
 import questionData from 'data/questionData';
 import { Link } from 'react-router-dom';
+import { db } from '../../../firebase';
+import { collection, addDoc, updateDoc, doc, serverTimestamp } from 'firebase/firestore';
 
 function QuestionWrite() {
+  const userId = sessionStorage.getItem('userId'); // 세션 스토리지에서 사용자 ID 가져오기
+
   const { id } = useParams();
   const question = questionData.find(question => question.id === parseInt(id));
 
@@ -24,6 +28,31 @@ function QuestionWrite() {
 
   const handleChange = (event) => {
     setMessage(event.target.value);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const answerId = `${userId}_${id}`;
+
+      await addDoc(collection(db, 'QuestionAnswers'), {
+        id: answerId,
+        answer: message,
+        answerDate: serverTimestamp(),
+        questionId: parseInt(id),
+        userId: userId
+      });
+
+      const questionDocRef = doc(db, 'Questions', id);
+      await updateDoc(questionDocRef, {
+        answerDate: serverTimestamp()
+      });
+
+      alert('답변이 성공적으로 등록되었습니다.');
+    } catch (error) {
+      console.error('Error writing document: ', error);
+      alert('답변 등록 중 오류가 발생했습니다.');
+    }
   };
 
   return (
@@ -44,7 +73,7 @@ function QuestionWrite() {
               color={question.color}
               emoji={question.emoji}
             />
-            <Column gap="1.94">
+            <Column gap="1.94" as="form" onSubmit={handleSubmit}>
               <TextArea
                 name="question"
                 value={message}
@@ -53,7 +82,7 @@ function QuestionWrite() {
                 rows={5}
                 required
               />
-            <Button variant="primary" type="submit">등록</Button>
+              <Button variant="primary" type="submit" onClick={handleSubmit}>등록</Button>
             </Column>
           </WritingBox>
         </WritePageBox>
@@ -63,8 +92,8 @@ function QuestionWrite() {
     </Layout>
   );
 }
-
 export default QuestionWrite;
+
 
 const WritePageBox = styled.div`
     width: 100%;

@@ -8,6 +8,8 @@ import Footer from 'components/Common/Footer';
 import TalkItem from 'components/TalkItem';
 import color from 'styles/color';
 import talkData from 'data/talkData';
+import Button from 'components/Common/Button';
+import Column from 'components/Common/Flex/Column';
 
 function Talk() {
     const navigate = useNavigate();
@@ -20,22 +22,25 @@ function Talk() {
         <Layout bgcolor={color.gray[50]}>
             <Screen>
                 <TalkPageBox>
-                <TitleBox>
-                    <img className="logo" src={Logo} alt="하루하루" />
-                    <PageTitle title="오늘의 이야깃거리예요!" subTitle="원설아 님의 의견을 들려주세요." />
-                </TitleBox>
-                <ItemsBox>
-                    {talkData.map(talk => (
-                        <TalkItem
-                            key={talk.id}
-                            id={talk.id}
-                            writer={talk.writer}
-                            contents={talk.content}
-                            color={talk.color}
-                            onClick={() => handleTalkItemClick(talk.id)}
-                        />
-                    ))}
-                </ItemsBox>
+                    <TitleBox>
+                        <img className="logo" src={Logo} alt="하루하루" />
+                        <PageTitle title="오늘의 이야깃거리예요!" subTitle="원설아 님의 의견을 들려주세요." />
+                    </TitleBox>
+                    <Column gap={3}>
+                        <ItemsBox>
+                            {talkData.map(talk => (
+                                <TalkItem
+                                    key={talk.id}
+                                    id={talk.id}
+                                    writer={talk.writer}
+                                    contents={talk.content}
+                                    color={talk.color}
+                                    onClick={() => handleTalkItemClick(talk.id)}
+                                />
+                            ))}
+                        </ItemsBox>
+                        <Button variant={"primary"} width="19.625rem">질문 등록하기</Button>
+                    </Column>
                 </TalkPageBox>
                 <Footer selectedPage={1}/>
             </Screen>

@@ -12,43 +12,64 @@ import keywordData from 'data/keywordData';
 import KeywordItem from 'components/Profile/KeywordItem';
 import Button from 'components/Common/Button';
 import Row from 'components/Common/Flex/Row';
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase';
+import { useState, useEffect } from 'react';
 
 function Profile() {
-    const userId = "seola1ne";
-    const user = userData.find(u => u.id === userId);
-    const keywordInfo = keywordData.find(data => data.userId === user.id);
+    const userId = sessionStorage.getItem('userId'); // 세션 스토리지에서 사용자 ID 가져오기
+
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+    const fetchUserData = async () => {
+        try {
+        const userDocRef = doc(db, 'Users', userId);
+        const userDoc = await getDoc(userDocRef);
+        if (userDoc.exists()) {
+            setUser(userDoc.data());
+        } else {
+            console.log('No such document!');
+        }
+        } catch (error) {
+        console.error('Error fetching user data: ', error);
+        }
+    };
+    fetchUserData();
+    }, [userId]);
 
     return (
         <Layout bgcolor={color.gray[50]}>
-            <Screen>
-                <ProfilePageBox>
-                    <TitleBox>
-                        <img className="logo" src={Logo} alt="하루하루" />
-                    </TitleBox>
-                    <BoxLayout>
-                        <ProfileBox>
-                            <p className="box-title">프로필</p>
-                            <ProfileItem
-                                img="https://www.studiopeople.kr/common/img/default_profile.png"
-                                id={user.id}
-                                name={user.name}
-                                birthday={user.birthday}
-                            />
-                        </ProfileBox>
-
-                        <KeywordBox>
-                            <Column gap={0.2}>
-                                <p className="box-title">{user.name} 님의 키워드</p>
-                                <p className="box-subtitle">현재까지의 기록을 바탕으로 추출된 키워드예요.</p>
-                            </Column>
-                            <KeywordItem keywords={keywordInfo.keywords} />
-                        </KeywordBox>
-                    </BoxLayout>
-                </ProfilePageBox>
-                <Footer selectedPage={3}/>
-            </Screen>
+          <Screen>
+            <ProfilePageBox>
+              <TitleBox>
+                <img className="logo" src={Logo} alt="하루하루" />
+              </TitleBox>
+              <BoxLayout>
+                <ProfileBox>
+                  <p className="box-title">프로필</p>
+                  {user && (
+                    <ProfileItem
+                      img="https://www.studiopeople.kr/common/img/default_profile.png"
+                      id={user.id}
+                      name={user.name}
+                      birthday={user.birthday}
+                    />
+                  )}
+                </ProfileBox>
+    
+                <KeywordBox>
+                  <Column gap={0.2}>
+                    <p className="box-title">{user?.name} 님의 키워드</p>
+                    <p className="box-subtitle">현재까지의 기록을 바탕으로 추출된 키워드예요.</p>
+                  </Column>
+                </KeywordBox>
+              </BoxLayout>
+            </ProfilePageBox>
+            <Footer selectedPage={3} />
+          </Screen>
         </Layout>
-    )
+    );
 }
 
 export default Profile;

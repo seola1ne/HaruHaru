@@ -10,13 +10,19 @@ import ArrowLeft from "assets/icon/arrow-left.png";
 import Column from 'components/Common/Flex/Column';
 import Button from 'components/Common/Button';
 import WritingIllust from 'assets/global/writing-illust.png';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import TextArea from 'components/Common/TextArea';
 import ContentItem from 'components/ContentItem';
 import talkData from 'data/talkData';
 import { Link } from 'react-router-dom';
+import { db } from '../../../firebase';
+import { collection, setDoc, updateDoc, doc, serverTimestamp } from 'firebase/firestore';
+
 
 function TalkWrite() {
+  const userId = sessionStorage.getItem('userId');
+  const navigate = useNavigate();
+  
   const { id } = useParams();
   const question = talkData.find(question => question.id === parseInt(id));
 
@@ -25,6 +31,33 @@ function TalkWrite() {
   const handleChange = (event) => {
     setMessage(event.target.value);
   };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const answerId = `${userId}_${id}`;
+      const numericId = parseInt(id);
+
+      await setDoc(doc(db, 'TalkAnswers', numericId.toString()), {
+        id: answerId,
+        answer: message,
+        answerDate: serverTimestamp(),
+        talkId: numericId,
+        userId: userId
+      });
+
+      const TalkDocRef = doc(db, 'Talks', id);
+      await updateDoc(TalkDocRef, {
+        answerDate: serverTimestamp()
+      });
+
+      alert('답변이 성공적으로 등록되었습니다.');
+      navigate(`/talk/${id}`);
+      } catch (error) {
+        console.error('Error writing document: ', error);
+        alert('답변 등록 중 오류가 발생했습니다.');
+      }
+    }
 
   return (
     <Layout bgcolor={color.gray[50]}>
@@ -53,7 +86,9 @@ function TalkWrite() {
                 rows={5}
                 required
               />
-            <Button variant="primary" type="submit">등록</Button>
+            <Button variant="primary" type="submit" onClick={handleSubmit}>
+              등록
+            </Button>
             </Column>
           </WritingBox>
         </WritePageBox>

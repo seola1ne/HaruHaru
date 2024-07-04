@@ -45,7 +45,7 @@ function Profile() {
                         </KeywordBox>
                     </BoxLayout>
                 </ProfilePageBox>
-                <Footer />
+                <Footer selectedPage={3}/>
             </Screen>
         </Layout>
     )

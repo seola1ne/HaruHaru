@@ -37,7 +37,7 @@ function Talk() {
                     ))}
                 </ItemsBox>
                 </TalkPageBox>
-                <Footer />
+                <Footer selectedPage={1}/>
             </Screen>
         </Layout>
     )
@@ -48,6 +48,9 @@ export default Talk;
 const TalkPageBox = styled.div`
     width: 100%;
     padding: 4.19rem 2.19rem 0rem 2.19rem;
+    overflow-y: auto;
+    max-height: 45rem;
+    scrollbar-width: none;
 `;
 
 const TitleBox = styled.div`

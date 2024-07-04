@@ -53,7 +53,7 @@ function TalkAnswer() {
                         ))}
                     </TalkList>
                 </AnswerPageBox>
-                <Footer />
+                <Footer selectedPage={2}/>
             </Screen>
         </Layout>
     )

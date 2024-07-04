@@ -58,7 +58,7 @@ function TalkWrite() {
           </WritingBox>
         </WritePageBox>
         <IllustImg src={WritingIllust} />
-        <Footer />
+        <Footer selectedPage={1}/>
       </Screen>
     </Layout>
   );

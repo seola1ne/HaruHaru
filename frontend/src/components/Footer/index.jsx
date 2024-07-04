@@ -3,6 +3,7 @@ import styled from "styled-components";
 import color from "styles/color";
 import { Link } from "react-router-dom";
 import HomeIndicatorImg from "assets/global/Home_Indicator.png";
+import NavButton from "./NavButton";
 
 import QuestionFill from "assets/footer/question-fill.png";
 import QuestionDefault from "assets/footer/question-default.png";
@@ -11,42 +12,30 @@ import TalkDefault from "assets/footer/talk-default.png";
 import StorageFill from "assets/footer/storage-fill.png";
 import StorageDefault from "assets/footer/storage-default.png";
 import ProfileFill from "assets/footer/profile-fill.png";
-import ProfileDefault from "assets/footer/profile-default.png"
+import ProfileDefault from "assets/footer/profile-default.png";
 
 function Footer() {
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState();
 
   const NavArray = [
     {
       text: "1문 1답",
-      icon: [
-        QuestionFill,
-        QuestionDefault,
-      ],
+      icon: [QuestionFill, QuestionDefault],
       endpoint: "/question",
     },
     {
       text: "이야기",
-      icon: [
-        TalkFill,
-        TalkDefault,
-      ],
+      icon: [TalkFill, TalkDefault],
       endpoint: "/talk",
     },
     {
       text: "저장소",
-      icon: [
-        StorageFill,
-        StorageDefault,
-      ],
+      icon: [StorageFill, StorageDefault],
       endpoint: "/storage",
     },
     {
       text: "프로필",
-      icon: [
-        ProfileFill,
-        ProfileDefault,
-      ],
+      icon: [ProfileFill, ProfileDefault],
       endpoint: "/profile",
     },
   ];
@@ -55,22 +44,24 @@ function Footer() {
     <Container>
       <NavWrapper>
         {NavArray.map((item, index) => (
-          <NavItem
+          <StyledLink
+            to={item.endpoint}
             key={index}
             onClick={() => setSelectedIndex(index)}
           >
-            <StyledLink to={item.endpoint}>
-              <Icon src={index === selectedIndex ? item.icon[0] : item.icon[1]} />
-              <Label selected={index === selectedIndex}>{item.text}</Label>
-            </StyledLink>
-          </NavItem>
+            <NavButton
+              index={index + 1}
+              text={item.text}
+              icon={item.icon}
+              isActive={selectedIndex === index}
+            />
+          </StyledLink>
         ))}
       </NavWrapper>
       <HomeIndicator src={HomeIndicatorImg} />
     </Container>
   );
 }
-
 
 export default Footer;
 
@@ -86,7 +77,7 @@ const Container = styled.div`
   z-index: 3;
   border-radius: 0 0 49px 49px;
   width: 100%;
-  background-color: ${color.base['white']};
+  background-color: ${color.base["white"]};
   border-top: 1px solid ${color.gray[100]};
 `;
 
@@ -98,33 +89,11 @@ const NavWrapper = styled.div`
   margin-bottom: 1rem;
 `;
 
-const NavItem = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-`;
-
 const StyledLink = styled(Link)`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
-
-const Icon = styled.img`
-  width: 20px;
-  height: 20px;
-`;
-
-const Label = styled.span`
-  font-size: 0.875rem;
-  color: ${({ selected }) => selected ? color.gray[800] : color.gray[400]};
-  margin-top: 8px;
 `;
 
 const HomeIndicator = styled.img`

@@ -38,7 +38,7 @@ function Storage() {
                     </StyledLink>
                 </ItemsBox>
                 </StoragePageBox>
-                <Footer />
+                <Footer selectedPage={2}/>
             </Screen>
         </Layout>
     )

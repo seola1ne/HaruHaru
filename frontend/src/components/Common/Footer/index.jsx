@@ -14,40 +14,28 @@ import ProfileFill from "assets/footer/profile-fill.png";
 import ProfileDefault from "assets/footer/profile-default.png"
 import font from "styles/font";
 
-function Footer() {
-  const [selectedIndex, setSelectedIndex] = useState(0);
+function Footer({ selectedPage }) {
+  const [selectedIndex, setSelectedIndex] = useState(selectedPage);
 
   const NavArray = [
     {
       text: "1문 1답",
-      icon: [
-        QuestionFill,
-        QuestionDefault,
-      ],
+      icon: [QuestionFill, QuestionDefault],
       endpoint: "/question",
     },
     {
       text: "이야기",
-      icon: [
-        TalkFill,
-        TalkDefault,
-      ],
+      icon: [TalkFill, TalkDefault],
       endpoint: "/talk",
     },
     {
       text: "저장소",
-      icon: [
-        StorageFill,
-        StorageDefault,
-      ],
+      icon: [StorageFill, StorageDefault],
       endpoint: "/storage",
     },
     {
       text: "프로필",
-      icon: [
-        ProfileFill,
-        ProfileDefault,
-      ],
+      icon: [ProfileFill, ProfileDefault],
       endpoint: "/profile",
     },
   ];
@@ -71,7 +59,6 @@ function Footer() {
     </Container>
   );
 }
-
 
 export default Footer;
 

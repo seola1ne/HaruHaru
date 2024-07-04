@@ -58,7 +58,7 @@ function QuestionWrite() {
           </WritingBox>
         </WritePageBox>
         <IllustImg src={WritingIllust} />
-        <Footer />
+        <Footer selectedPage={0}/>
       </Screen>
     </Layout>
   );

@@ -37,7 +37,7 @@ function Question() {
                     ))}
                 </ItemsBox>
                 </QuestionPageBox>
-                <Footer />
+                <Footer selectedPage={0}/>
             </Screen>
         </Layout>
     )

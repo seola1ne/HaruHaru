@@ -1,5 +1,6 @@
 import Profile from "pages/profile";
 import Question from "pages/question/question";
+import QuestionAnswerById from "pages/question/[id]";
 import QuestionWrite from "pages/question/[id]/write";
 import SignUp from "pages/signup";
 import Splash from "pages/splash";
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<Splash />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/question" element={<Question />} />
+        <Route path="/question/:id" element={<QuestionAnswerById />} />
         <Route path="/question/:id/write" element={<QuestionWrite />} />
         <Route path="/talk/:id/write" element={<TalkWrite />} />
         <Route path="/talk" element={<Talk />} />

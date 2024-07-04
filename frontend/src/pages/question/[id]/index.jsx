@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { styled } from 'styled-components';
 import Layout from "layout/Layout";
 import Screen from "layout/Screen/Screen";
@@ -16,47 +16,42 @@ import ContentItem from 'components/ContentItem';
 import questionData from 'data/questionData';
 import { Link } from 'react-router-dom';
 import { db } from '../../../firebase';
-import { collection, setDoc, updateDoc, doc, serverTimestamp } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 
-function QuestionWrite() {
-  const userId = sessionStorage.getItem('userId');
-  const navigate = useNavigate();
-
+function QuestionAnswerById() {
+  const userId = sessionStorage.getItem('userId'); // 세션 스토리지에서 사용자 ID 가져오기
   const { id } = useParams();
   const question = questionData.find(question => question.id === parseInt(id));
+  
+  const [answer, setAnswer] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const [message, setMessage] = useState('');
+  useEffect(() => {
+    const fetchAnswer = async () => {
+      try {
+        const numericId = parseInt(id); // 숫자 형식의 ID 사용
+        const docRef = doc(db, 'QuestionAnswers', numericId.toString());
+        const docSnap = await getDoc(docRef);
 
-  const handleChange = (event) => {
-    setMessage(event.target.value);
-  };
+        if (docSnap.exists()) {
+          setAnswer(docSnap.data().answer);
+        } else {
+          setAnswer('답변이 존재하지 않습니다.');
+        }
+      } catch (error) {
+        console.error('Error fetching document:', error);
+        setAnswer('답변을 불러오는 중 오류가 발생했습니다.');
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const answerId = `${userId}_${id}`;
-      const numericId = parseInt(id);
+    fetchAnswer();
+  }, [id, userId]);
 
-      await setDoc(doc(db, 'QuestionAnswers', numericId.toString()), {
-        id: answerId,
-        answer: message,
-        answerDate: serverTimestamp(),
-        questionId: numericId,
-        userId: userId
-      });
-
-      const questionDocRef = doc(db, 'Questions', id);
-      await updateDoc(questionDocRef, {
-        answerDate: serverTimestamp()
-      });
-
-      alert('답변이 성공적으로 등록되었습니다.');
-      navigate(`/question/${id}`);
-    } catch (error) {
-      console.error('Error writing document: ', error);
-      alert('답변 등록 중 오류가 발생했습니다.');
-    }
-  };
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Layout bgcolor={color.gray[50]}>
@@ -76,17 +71,9 @@ function QuestionWrite() {
               color={question.color}
               emoji={question.emoji}
             />
-            <Column gap="1.94" as="form" onSubmit={handleSubmit}>
-              <TextArea
-                name="question"
-                value={message}
-                onChange={handleChange}
-                placeholder="답변을 입력해 주세요."
-                rows={5}
-                required
-              />
-              <Button variant="primary" type="submit" onClick={handleSubmit}>등록</Button>
-            </Column>
+            <AnswerBox>
+              {answer}
+            </AnswerBox>
           </WritingBox>
         </WritePageBox>
         <IllustImg src={WritingIllust} />
@@ -96,7 +83,7 @@ function QuestionWrite() {
   );
 }
 
-export default QuestionWrite;
+export default QuestionAnswerById;
 
 
 const WritePageBox = styled.div`
@@ -137,23 +124,31 @@ const TitleBox = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-  display: flex;
-  align-items: center;
-  gap: 0.38rem;
-  color: ${color.base['black']};
-  text-decoration: none;
-`
+    display: flex;
+    align-items: center;
+    gap: 0.38rem;
+    color: ${color.base['black']};
+    text-decoration: none;
+`;
 
 const WritingBox = styled.div`
-  width: 20.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.37rem;
+    width: 20.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.37rem;
+`;
+
+const AnswerBox = styled.div`
+  margin-top: 20px;
+  color: ${color.gray[800]};
+  white-space: pre-wrap;
 `;
 
 const IllustImg = styled.img`
   position: absolute;
+  bottom: 150px;
   right: 0;
-  bottom: 9rem;
-  z-index: 1;
+  width: 300px;
+  height: auto;
 `;
+

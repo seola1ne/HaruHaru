@@ -9,7 +9,7 @@ import font from 'styles/font';
 import HomeIndicatorImg from "assets/global/Home_Indicator.png";
 import { useState } from 'react';
 
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { doc, getFirestore, collection, setDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 
 function SignUp() {
@@ -17,23 +17,33 @@ function SignUp() {
   const [userId, setUserId] = useState('');
   const [userPassword, setUserPassword] = useState('');
   const [userBirthday, setUserBirthday] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!userName || !userId || !userPassword || !userBirthday) {
+      setError('입력되지 않은 정보가 있어요!');
+      return;
+    }
+
     try {
-      const docRef = await addDoc(collection(db, 'Users'), {
-        id: userId,
+      await setDoc(doc(db, 'Users', userId), {
         birthday: userBirthday,
         name: userName,
         password: userPassword,
       });
-      console.log('Document written with ID: ', docRef.id);
-      sessionStorage.setItem('userId', docRef.id); // 사용자 ID를 세션 스토리지에 저장
+      console.log('Document written with ID: ', userId);
+      sessionStorage.setItem('userId', userId); // 사용자 ID를 세션 스토리지에 저장
       navigate('/question');
     } catch (error) {
-      console.error('Error adding document: ', error);
+      if (error.code === 'already-exists') {
+        setError('이미 사용 중인 아이디예요. 다른 아이디를 입력해 주세요.');
+      } else {
+        console.error('Error adding document: ', error);
+        setError('회원가입 중 오류가 발생했어요. 잠시 후 다시 시도해 주세요.');
+      }
     }
   };
 
@@ -85,11 +95,13 @@ function SignUp() {
                   onChange={(e) => setUserBirthday(e.target.value)}
                 />
               </InputList>
-            </form>
 
-            <Button variant="primary" type="submit" onClick={handleSubmit}>
-              다음
-            </Button>
+              {error && <ErrorMessage>{error}</ErrorMessage>}
+
+              <Button variant="primary" type="submit" onClick={handleSubmit}>
+                다음
+              </Button>
+            </form>
           </InputAreaBox>
           <HomeIndicator src={HomeIndicatorImg} />
         </SignUpPageBox>
@@ -142,4 +154,9 @@ const HomeIndicator = styled.img`
     width: 100%;
     height: 100%;
     bottom: 0;
+`;
+
+const ErrorMessage = styled.p`
+  ${font.p1};
+  color: red;
 `;

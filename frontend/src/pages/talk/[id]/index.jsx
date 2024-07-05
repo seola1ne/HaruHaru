@@ -7,21 +7,18 @@ import Footer from 'components/Common/Footer';
 import color from 'styles/color';
 import font from 'styles/font';
 import ArrowLeft from "assets/icon/arrow-left.png";
-import Column from 'components/Common/Flex/Column';
-import Button from 'components/Common/Button';
 import WritingIllust from 'assets/global/writing-illust.png';
 import { useParams, useNavigate } from 'react-router-dom';
-import TextArea from 'components/Common/TextArea';
 import ContentItem from 'components/ContentItem';
-import questionData from 'data/questionData';
+import talkData from 'data/talkData';
 import { Link } from 'react-router-dom';
 import { db } from '../../../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 
-function QuestionAnswerById() {
+function TalkAnswerById() {
   const userId = sessionStorage.getItem('userId'); // 세션 스토리지에서 사용자 ID 가져오기
   const { id } = useParams();
-  const question = questionData.find(question => question.id === parseInt(id));
+  const talk = talkData.find(talk => talk.id === parseInt(id));
   
   const [answer, setAnswer] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -30,7 +27,7 @@ function QuestionAnswerById() {
     const fetchAnswer = async () => {
       try {
         const numericId = parseInt(id); // 숫자 형식의 ID 사용
-        const docRef = doc(db, 'QuestionAnswers', numericId.toString());
+        const docRef = doc(db, 'TalkAnswers', numericId.toString());
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
@@ -59,22 +56,22 @@ function QuestionAnswerById() {
         <AnswerPageBox>
           <TitleBox>
             <img className="logo" src={Logo} alt="하루하루" />
-            <StyledLink to="/question">
+            <StyledLink to="/talk">
               <img className="arrow" src={ArrowLeft} alt="돌아가기"/>
               1문 1답
             </StyledLink>
           </TitleBox>
-          <QuestionBox>
+          <TalkBox>
             <ContentItem
-              title={question.content}
-              createDate={question.createDate}
-              color={question.color}
-              emoji={question.emoji}
+              title={talk.content}
+              createDate={talk.createDate}
+              color={talk.color}
+              emoji={talk.emoji}
             />
             <AnswerBox>
               {answer}
             </AnswerBox>
-          </QuestionBox>
+          </TalkBox>
         </AnswerPageBox>
         <IllustImg src={WritingIllust} />
         <Footer selectedPage={0}/>
@@ -83,7 +80,7 @@ function QuestionAnswerById() {
   );
 }
 
-export default QuestionAnswerById;
+export default TalkAnswerById;
 
 
 const AnswerPageBox = styled.div`
@@ -131,7 +128,7 @@ const StyledLink = styled(Link)`
     text-decoration: none;
 `;
 
-const QuestionBox = styled.div`
+const TalkBox = styled.div`
     width: 20.5rem;
     display: flex;
     flex-direction: column;

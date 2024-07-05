@@ -157,6 +157,7 @@ const HomeIndicator = styled.img`
 `;
 
 const ErrorMessage = styled.p`
-  ${font.p1};
+  ${font.p3};
   color: red;
+  text-align: center;
 `;

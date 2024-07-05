@@ -5,15 +5,25 @@ import styled from 'styled-components';
 import color from 'styles/color';
 import font from 'styles/font';
 
-function AnswerItem({id, title, emoji, answer, date, isActive, onClick}){
-  function formatDate(date) {
-    const year = date.slice(0, 4);
-    const month = date.slice(4, 6);
-    const day = date.slice(6, 8);
+function AnswerItem({ id, title, emoji, answer, date, isActive, onClick }) {
+  function formatDate(timestamp) {
+    if (!timestamp || !timestamp.toDate) {
+      return 'Invalid Date';
+    }
+
+    const dateObj = timestamp.toDate(); // Firestore Timestamp를 JavaScript Date 객체로 변환
+    const year = dateObj.getFullYear();
+    const month = (dateObj.getMonth() + 1).toString().padStart(2, '0');
+    const day = dateObj.getDate().toString().padStart(2, '0');
     return `${year}. ${month}. ${day}`;
   }
 
   const formattedDate = formatDate(date);
+
+  // 답변이 'No answer'일 경우 null을 반환하여 렌더링을 하지 않음
+  if (answer === 'No answer') {
+    return null;
+  }
 
   return (
     <AnswerItemBox onClick={onClick}>
@@ -31,9 +41,11 @@ function AnswerItem({id, title, emoji, answer, date, isActive, onClick}){
       </Row>
     </AnswerItemBox>
   );
-};
+}
 
 export default AnswerItem;
+
+
 
 const AnswerItemBox = styled.div`
   background-color: ${color.base['white']};

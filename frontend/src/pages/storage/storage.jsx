@@ -77,7 +77,7 @@ const StorageItem = styled.div`
     width: 20rem;
     height: 8.3rem;
     border-radius: 1.25rem;
-    border: 1px solid ${color.gray[100]};
+    border: 1px solid ${color.gray[300]};
     background-color: ${color.base['white']};
 
     p {
@@ -100,7 +100,7 @@ const StorageItem = styled.div`
     &:hover {
         cursor: pointer;
         background-color: ${color.gray[50]};
-        border-color: ${color.gray[200]};
+        border-color: ${color.gray[400]};
         transition: 0.2s ease;
     }
 `

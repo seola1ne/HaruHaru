@@ -36,7 +36,7 @@ const ItemBox = styled.div`
     width: 18.75rem;
 
     border-radius: 1.25rem;
-    border: 1px solid ${color.gray[100]};
+    border: 1px solid ${color.gray[300]};
     background-color: ${color.base['white']};
 
     padding: 1.5rem 1.25rem;

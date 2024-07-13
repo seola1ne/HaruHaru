@@ -27,6 +27,18 @@ function TalkAnswer() {
         },
     ];
 
+    const formatDate = (dateString) => {
+        if (!dateString || dateString.length !== 8) {
+            return 'Invalid Date';
+        }
+
+        const year = dateString.substring(0, 4);
+        const month = dateString.substring(4, 6);
+        const day = dateString.substring(6, 8);
+
+        return `${year}. ${month}. ${day}.`;
+    };
+
     return (
         <Layout bgcolor={color.gray[50]}>
             <Screen>
@@ -46,7 +58,7 @@ function TalkAnswer() {
                                 emoji={talk.emoji}
                                 title={talk.talk}
                                 answer={talk.answer}
-                                date={talk.date}
+                                date={formatDate(talk.date)} // 날짜 포맷팅 함수 호출
                                 isActive={activeIndex === index}
                                 onClick={() => handleTalkClick(index)}
                             />

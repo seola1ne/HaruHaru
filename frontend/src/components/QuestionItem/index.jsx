@@ -25,7 +25,7 @@ const ItemBox = styled.div`
     border-radius: 0.625rem;
     width: 17rem;
     min-height: 6.6rem;
-    border: 2px solid ${color.gray[100]};
+    border: 2px solid ${color.gray[200]};
     background-color: ${color.base['white']};
     display: flex;
     justify-content: space-between;

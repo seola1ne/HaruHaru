@@ -52,7 +52,7 @@ function QuestionAnswer() {
                     return {
                         ...question,
                         answer: answer ? answer.answer : 'No answer',
-                        answerDate: answer ? formatDate(answer.answerDate) : 'N/A',
+                        answerDate: answer ? answer.answerDate : null, // Firestore Timestamp object
                         createDate: formatDate(question.createDate)
                     };
                 });
@@ -75,14 +75,15 @@ function QuestionAnswer() {
     };
 
     const formatDate = (timestamp) => {
-        if (!timestamp || !(timestamp instanceof Timestamp)) {
+        if (!timestamp || !timestamp.toDate) {
             return 'Invalid Date';
         }
-        const dateObj = timestamp.toDate();
+
+        const dateObj = timestamp.toDate(); // Firestore Timestamp를 JavaScript Date 객체로 변환
         const year = dateObj.getFullYear();
         const month = (dateObj.getMonth() + 1).toString().padStart(2, '0');
         const day = dateObj.getDate().toString().padStart(2, '0');
-        return `${year}. ${month}. ${day}`;
+        return `${year}. ${month}. ${day}.`;
     };
 
     if (loading) {
@@ -126,7 +127,6 @@ function QuestionAnswer() {
 }
 
 export default QuestionAnswer;
-
 
 const AnswerPageBox = styled.div`
     width: 100%;

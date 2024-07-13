@@ -22,20 +22,25 @@ function Profile() {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-    const fetchUserData = async () => {
-        try {
-        const userDocRef = doc(db, 'Users', userId);
-        const userDoc = await getDoc(userDocRef);
-        if (userDoc.exists()) {
-            setUser(userDoc.data());
+        const fetchUserData = async () => {
+            try {
+                const userDocRef = doc(db, 'Users', userId);
+                const userDoc = await getDoc(userDocRef);
+                if (userDoc.exists()) {
+                    setUser(userDoc.data());
+                } else {
+                    console.log('No such document!');
+                }
+            } catch (error) {
+                console.error('Error fetching user data: ', error);
+            }
+        };
+
+        if (userId) {
+            fetchUserData();
         } else {
-            console.log('No such document!');
+            console.log('No userId found in sessionStorage');
         }
-        } catch (error) {
-        console.error('Error fetching user data: ', error);
-        }
-    };
-    fetchUserData();
     }, [userId]);
 
     return (
@@ -47,11 +52,11 @@ function Profile() {
               </TitleBox>
               <BoxLayout>
                 <ProfileBox>
-                  <p className="box-title">프로필</p>
+                  <p className="title">프로필</p>
                   {user && (
                     <ProfileItem
                       img="https://www.studiopeople.kr/common/img/default_profile.png"
-                      id={user.id}
+                      id={userId}
                       name={user.name}
                       birthday={user.birthday}
                     />
@@ -59,9 +64,12 @@ function Profile() {
                 </ProfileBox>
     
                 <KeywordBox>
-                  <Column gap={0.2}>
-                    <p className="box-title">{user?.name} 님의 키워드</p>
-                    <p className="box-subtitle">현재까지의 기록을 바탕으로 추출된 키워드예요.</p>
+                  <Column gap={0.8}>
+                    <Column gap={0.2}>
+                      <p className="box-title">{user?.name} 님의 키워드</p>
+                      <p className="box-subtitle">현재까지의 기록을 바탕으로 추출된 키워드예요.</p>
+                    </Column>
+                    <p className="box-notice">아직은 키워드가 없어요.<br />더 많은 기록들을 쌓아 볼까요?</p>
                   </Column>
                 </KeywordBox>
               </BoxLayout>
@@ -83,14 +91,22 @@ const ProfilePageBox = styled.div`
         margin: 0;
     }
 
+    .title {
+      margin-left: 1rem;
+      ${font.H1};
+    }
+
     .box-title {
-        margin-left: 1rem;
         ${font.H1};
     }
 
     .box-subtitle {
-        margin-left: 1rem;
         color: ${color.gray[500]};
+    }
+
+    .box-notice {
+      ${font.p2_bold};
+  
     }
 `;
 

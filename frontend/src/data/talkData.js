@@ -15,8 +15,8 @@ const talkData = [
     },
     {
       id: 3,
-      writer: "원설아",
-      content: "'점심은 역시 찌개보다 든든한 치즈돈가스가 낫지!!!'라고 말하는 친구... 정말 찌개가 먹고 싶은데 어떻게 할까?",
+      writer: "심지혜",
+      content: "피자 토핑을 내 마음대로 아무거나 얹을 수 있다면?",
       createDate: "20240624",
       answerDate: null
     },

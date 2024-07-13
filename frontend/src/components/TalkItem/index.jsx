@@ -27,7 +27,7 @@ const ItemBox = styled.div`
   border-radius: 0.625rem;
   width: 17rem;
   min-height: 6.6rem;
-  border: 2px solid ${color.gray[100]};
+  border: 1px solid ${color.gray[300]};
   background-color: ${color.base["white"]};
   display: flex;
   justify-content: space-between;
@@ -38,7 +38,7 @@ const ItemBox = styled.div`
   &:hover {
     cursor: pointer;
     background-color: rgba(241, 243, 246, 0.3);
-    border-color: ${color.gray[200]};
+    border-color: ${color.gray[400]};
     transition: 0.2s ease;
   }
 `;
@@ -55,7 +55,7 @@ const CircleBox = styled.div`
   width: 10rem;
   height: 10rem;
   border-radius: 50%;
-  background-color: ${color.gray[100]};
+  background-color: ${color.gray[200]};
   text-align: center;
   margin-left: -4.4rem;
 `;
